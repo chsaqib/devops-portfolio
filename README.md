@@ -10,7 +10,7 @@ Requires Node.js 22 or later.
 npm run dev
 ```
 
-Open http://127.0.0.1:4173.
+Open http://localhost:4173 (runs `wrangler dev` with a local D1 database).
 
 ## Deploy
 
@@ -37,4 +37,4 @@ Cloudflare Workers Builds: connect this repository, leave the build command empt
 
 Profile reviewed 2026-09-25 from the signed-in LinkedIn profile. Work history, education, certifications, technical focus, and the approximate 100-account AWS scope reflect that profile. Terraform Associate is presented as a credential earned in August 2024, not as a claim of current certification; LinkedIn records the certification period through August 2026. The platform project distinguishes its working foundation from the broader planned architecture. Workflow visuals are explanatory diagrams, not live operational telemetry.
 
-No forms, analytics, cookies, or tracking scripts. Google Fonts provides the typefaces; system fonts serve as fallbacks. Motion respects the device's reduced-motion preference.
+A visitor counter (`worker.js`, D1 database `portfolio-visits`) stores only per-country totals from Cloudflare's `request.cf.country`; each browser is counted once via a `localStorage` flag. No forms, cookies, or third-party tracking scripts. Google Fonts provides the typefaces; system fonts serve as fallbacks. Motion respects the device's reduced-motion preference.

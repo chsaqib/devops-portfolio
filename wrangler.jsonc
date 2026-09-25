@@ -1,8 +1,12 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "saqib-devops-portfolio",
+  "main": "worker.js",
   "compatibility_date": "2026-09-24",
   "assets": {
     "directory": "./dist"
-  }
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "portfolio-visits" }
+  ]
 }
