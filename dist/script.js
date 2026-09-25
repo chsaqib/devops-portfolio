@@ -1,6 +1,8 @@
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.getElementById('year').textContent = String(new Date().getFullYear());
 const revealItems = document.querySelectorAll('.reveal');
+revealItems.forEach((item) => { const siblings = [...item.parentElement.children].filter((el) => el.classList.contains('reveal')); if (siblings.length > 1) item.style.setProperty('--stagger', `${siblings.indexOf(item) * 90}ms`); });
+document.querySelectorAll('.spotlight').forEach((card) => card.addEventListener('pointermove', (event) => { const rect = card.getBoundingClientRect(); card.style.setProperty('--x', `${event.clientX - rect.left}px`); card.style.setProperty('--y', `${event.clientY - rect.top}px`); }, { passive: true }));
 if (reduceMotion || !('IntersectionObserver' in window)) revealItems.forEach((item) => item.classList.add('visible'));
 else { const observer = new IntersectionObserver((entries, instance) => { entries.forEach((entry) => { if (!entry.isIntersecting) return; entry.target.classList.add('visible'); instance.unobserve(entry.target); }); }, { threshold: .12 }); revealItems.forEach((item) => observer.observe(item)); }
 const navLinks = [...document.querySelectorAll('.site-header nav a')];
