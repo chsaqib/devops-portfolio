@@ -20,3 +20,21 @@ fetch('/api/visits', { method: counted ? 'GET' : 'POST' }).then((res) => res.ok 
   document.getElementById('visitor-countries').replaceChildren(...rows.slice(0, 10).map((row) => { const li = document.createElement('li'); li.append(countryLabel(row.country), Object.assign(document.createElement('b'), { textContent: row.count.toLocaleString('en') })); return li; }));
   visitors.hidden = false;
 }).catch(() => {});
+
+(() => {
+  const root = document.documentElement;
+  const meta = document.getElementById('theme-color');
+  const btn = document.querySelector('[data-theme-toggle]');
+  if (!btn) return;
+  const sync = () => {
+    const light = root.dataset.theme === 'light';
+    btn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+    if (meta) meta.setAttribute('content', light ? '#f2f4ef' : '#080b10');
+  };
+  sync();
+  btn.addEventListener('click', () => {
+    root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch {}
+    sync();
+  });
+})();

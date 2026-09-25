@@ -3,7 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080b10">
+  <meta name="theme-color" content="#080b10" id="theme-color">
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('theme');
+        const theme = saved === 'light' || saved === 'dark'
+          ? saved
+          : (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.dataset.theme = theme;
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
   <title>Saqib Nazir — DevOps & Platform Engineer</title>
   <meta name="description" content="Saqib Nazir is a DevOps and Platform Engineer in Lisbon, building reliable cloud infrastructure, Kubernetes platforms, GitOps workflows, and developer tooling.">
   <meta property="og:title" content="Saqib Nazir — DevOps & Platform Engineer">
@@ -19,6 +32,9 @@
   <header class="site-header">
     <a class="brand" href="#home" aria-label="Saqib Nazir, home"><span class="brand-mark" aria-hidden="true">SN<span>/</span></span><span class="brand-copy"><strong>Saqib Nazir</strong><small>DevOps · Platform</small></span></a>
     <nav aria-label="Primary navigation"><a href="#impact">Impact</a><a href="#experience">Journey</a><a href="#work">Work</a><a href="#about">About</a></nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to light theme" data-theme-toggle>
+      <span class="theme-toggle-track" aria-hidden="true"><i class="icon-sun">☀</i><i class="icon-moon">☾</i></span>
+    </button>
     <a class="header-cta" href="https://www.linkedin.com/in/chsaqibnazir/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
   </header>
   <main id="main">
@@ -32,17 +48,17 @@
       </div>
       <aside class="hero-console reveal" aria-label="Saqib's infrastructure profile">
         <div class="console-bar"><span></span><span></span><span></span><small>platform.profile</small></div>
-        <div class="console-body"><p><span class="prompt">$</span> whoami</p><p class="console-output">saqib_nazir / devops_engineer</p><p><span class="prompt">$</span> current --focus</p><ul class="console-output focus-list"><li><span>→</span> multi-account AWS</li><li><span>→</span> Kubernetes &amp; GitOps</li><li><span>→</span> Terraform at scale</li><li><span>→</span> observability systems</li></ul><p><span class="prompt">$</span> status</p><div class="status-line console-output"><i></i> systems operational</div></div>
+        <div class="console-body"><p><span class="prompt">$</span> whoami</p><p class="console-output">saqib_nazir / devops_engineer</p><p><span class="prompt">$</span> current --focus</p><ul class="console-output focus-list"><li><span>→</span> multi-account AWS</li><li><span>→</span> Kubernetes · Flux · Argo</li><li><span>→</span> Terraform at scale</li><li><span>→</span> observability systems</li></ul><p><span class="prompt">$</span> status</p><div class="status-line console-output"><i></i> systems operational</div></div>
         <div class="console-footer"><span>100+ AWS accounts</span><span>multi-cluster</span></div>
       </aside>
       <div class="hero-stats reveal" id="impact"><article><strong data-count="100" data-suffix="+">100+</strong><span>AWS accounts operated</span></article><article><strong data-count="5" data-suffix="+">5+</strong><span>Years focused on DevOps</span></article><article><strong>IaC → GitOps</strong><span>Automation across the lifecycle</span></article><article><strong>Cloud + on-prem</strong><span>Hybrid platform experience</span></article></div>
     </section>
-    <div class="ticker" aria-label="Core technology stack"><div class="ticker-track"><span>Terraform</span><i>✦</i><span>Kubernetes</span><i>✦</i><span>AWS</span><i>✦</i><span>FluxCD</span><i>✦</i><span>Azure</span><i>✦</i><span>Grafana</span><i>✦</i><span>Prometheus</span><i>✦</i><span>Docker</span><i>✦</i><span>Terraform</span><i>✦</i><span>Kubernetes</span><i>✦</i><span>AWS</span><i>✦</i><span>FluxCD</span><i>✦</i></div></div>
+    <div class="ticker" aria-label="Core technology stack"><div class="ticker-track"><span>Terraform</span><i>✦</i><span>Kubernetes</span><i>✦</i><span>AWS</span><i>✦</i><span>FluxCD</span><i>✦</i><span>ArgoCD</span><i>✦</i><span>Azure</span><i>✦</i><span>Grafana</span><i>✦</i><span>Prometheus</span><i>✦</i><span>Docker</span><i>✦</i><span>Terraform</span><i>✦</i><span>Kubernetes</span><i>✦</i><span>AWS</span><i>✦</i><span>FluxCD</span><i>✦</i><span>ArgoCD</span><i>✦</i></div></div>
     <section class="section-shell manifesto reveal" aria-labelledby="manifesto-title"><p class="section-index">01 / OPERATING PRINCIPLES</p><div><h2 id="manifesto-title">Infrastructure should disappear into a <span>great developer experience.</span></h2><p>I design the paved roads behind dependable software: version-controlled infrastructure, automated delivery, observable systems, and security that starts in the pipeline—not after deployment.</p></div></section>
     <section class="section-shell experience" id="experience" aria-labelledby="experience-title">
       <div class="section-heading reveal"><div><p class="section-index">02 / EXPERIENCE</p><h2 id="experience-title">From front-end craft<br>to platform scale.</h2></div><p>A career shaped by building software first—and then building the systems that help software teams move faster.</p></div>
       <div class="timeline">
-        <article class="timeline-item reveal featured-role"><div class="timeline-date">2023 — NOW</div><div class="timeline-marker"><span></span></div><div class="timeline-content"><div class="role-heading"><div><p>SOVOS · LISBON · HYBRID</p><h3>DevOps Engineer</h3></div><span class="role-badge">CURRENT</span></div><p>Operating cloud infrastructure across approximately 100 AWS accounts and multiple Kubernetes clusters. Building Terraform foundations, GitOps delivery with FluxCD, hybrid AWS and CloudTemple platforms, and the observability needed to keep distributed systems reliable.</p><ul class="pill-list"><li>AWS</li><li>Kubernetes</li><li>Terraform</li><li>FluxCD</li><li>Grafana stack</li><li>Apigee</li></ul></div></article>
+        <article class="timeline-item reveal featured-role"><div class="timeline-date">2023 — NOW</div><div class="timeline-marker"><span></span></div><div class="timeline-content"><div class="role-heading"><div><p>SOVOS · LISBON · HYBRID</p><h3>Senior DevOps Engineer</h3></div><span class="role-badge">CURRENT</span></div><p>Operating cloud infrastructure across approximately 100 AWS accounts and multiple Kubernetes clusters. Building Terraform foundations, GitOps delivery with FluxCD and ArgoCD, hybrid AWS and CloudTemple platforms, and the observability needed to keep distributed systems reliable.</p><ul class="pill-list"><li>AWS</li><li>Kubernetes</li><li>Terraform</li><li>FluxCD</li><li>ArgoCD</li><li>Grafana stack</li><li>Apigee</li></ul></div></article>
         <article class="timeline-item reveal"><div class="timeline-date">2021 — 2023</div><div class="timeline-marker"><span></span></div><div class="timeline-content"><p>BLUE CROSS BLUE SHIELD ASSOCIATION · REMOTE</p><h3>DevOps Engineer</h3><p>Built Jenkins delivery pipelines, provisioned servers with Ansible, containerized services with Docker, and orchestrated workloads across Kubernetes and Docker Swarm.</p></div></article>
         <article class="timeline-item reveal"><div class="timeline-date">2022</div><div class="timeline-marker"><span></span></div><div class="timeline-content"><p>CAPGEMINI · LISBON · PROJECT</p><h3>DevOps Engineer</h3><p>Contributed to a focused client engagement through GBT Solutions, bringing hands-on DevOps delivery to a short, high-intensity project.</p></div></article>
         <article class="timeline-item reveal"><div class="timeline-date">2018 — 2020</div><div class="timeline-marker"><span></span></div><div class="timeline-content"><p>UNRAVEL AI · COPENHAGEN</p><h3>Frontend Developer</h3><p>Created React interfaces, reusable component libraries, and full website launches with a focus on quality, compatibility, and user-facing craft.</p></div></article>
@@ -51,7 +67,7 @@
     </section>
     <section class="work-section" id="work" aria-labelledby="work-title"><div class="section-shell">
       <div class="section-heading reveal"><div><p class="section-index">03 / WORK IN PRODUCTION</p><h2 id="work-title">Systems that turn<br>intent into momentum.</h2></div><p>Case studies from the platforms I build and run every day, across cloud, Kubernetes, delivery, and observability.</p></div>
-      <article class="project-feature reveal spotlight"><div class="project-visual" aria-hidden="true"><div class="visual-grid"></div><div class="architecture-flow"><div class="flow-node"><small>SOURCE</small><strong>Git</strong><span>versioned intent</span></div><div class="flow-link"><span><i class="packet"></i></span><b>SYNC</b></div><div class="flow-node accent"><small>DELIVERY</small><strong>FluxCD</strong><span>continuous reconcile</span></div><div class="flow-link"><span><i class="packet"></i></span><b>APPLY</b></div><div class="flow-node green"><small>RUNTIME</small><strong>K8s</strong><span>multiple clusters</span></div></div><div class="visual-status"><span><i></i> desired state synchronized</span><code>gitops</code></div></div><div class="project-copy"><div class="project-number">01 / SOVOS · 2023 — NOW</div><h3>GitOps delivery across Kubernetes clusters</h3><p>Declarative delivery with FluxCD: Git holds the desired state, Flux continuously reconciles it, and every cluster stays consistent and auditable—no manual drift, no snowflake environments.</p><ul class="pill-list"><li>Kubernetes</li><li>FluxCD</li><li>GitOps</li><li>Multi-cluster</li></ul></div></article>
+      <article class="project-feature reveal spotlight"><div class="project-visual" aria-hidden="true"><div class="visual-grid"></div><div class="architecture-flow"><div class="flow-node"><small>SOURCE</small><strong>Git</strong><span>versioned intent</span></div><div class="flow-link"><span><i class="packet"></i></span><b>SYNC</b></div><div class="flow-node accent"><small>DELIVERY</small><strong>Flux · Argo</strong><span>FluxCD · ArgoCD</span></div><div class="flow-link"><span><i class="packet"></i></span><b>APPLY</b></div><div class="flow-node green"><small>RUNTIME</small><strong>K8s</strong><span>multiple clusters</span></div></div><div class="visual-status"><span><i></i> desired state synchronized</span><code>gitops</code></div></div><div class="project-copy"><div class="project-number">01 / SOVOS · 2023 — NOW</div><h3>GitOps delivery across Kubernetes clusters</h3><p>Declarative delivery with FluxCD and ArgoCD: Git holds the desired state, either controller continuously reconciles it, and every cluster stays consistent and auditable—no manual drift, no snowflake environments.</p><ul class="pill-list"><li>Kubernetes</li><li>FluxCD</li><li>ArgoCD</li><li>GitOps</li></ul></div></article>
       <div class="project-grid">
         <article class="project-card reveal spotlight"><div class="card-top"><span class="card-icon">{ }</span><small>02 / SOVOS</small></div><div class="mini-visual accounts" aria-hidden="true"></div><h3>Multi-account AWS foundations</h3><p>Terraform foundations that keep an estate of roughly 100 AWS accounts consistent, version-controlled, and repeatable.</p><ul class="pill-list"><li>AWS</li><li>Terraform</li><li>IaC</li></ul></article>
         <article class="project-card reveal spotlight"><div class="card-top"><span class="card-icon">⇄</span><small>03 / SOVOS</small></div><div class="mini-visual hybrid" aria-hidden="true"><span>AWS</span><i><b class="packet"></b></i><span>CloudTemple</span></div><h3>Hybrid cloud platform</h3><p>Platforms spanning AWS and CloudTemple, bringing public cloud and private infrastructure under one operating model.</p><ul class="pill-list"><li>AWS</li><li>CloudTemple</li><li>Apigee</li></ul></article>
