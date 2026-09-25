@@ -26,7 +26,7 @@ Cloudflare Workers Builds: connect this repository, leave the build command empt
 
 - `dist/index.html`: profile, projects, links, and metadata.
 - `dist/style.css`: responsive layout and theme.
-- `dist/portrait.jpg`: public GitHub profile portrait.
+- `dist/portrait.jpg`: LinkedIn profile portrait.
 - `wrangler.jsonc`: Cloudflare Worker name and assets configuration.
 
 ## Content sources
